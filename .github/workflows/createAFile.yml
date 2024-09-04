@@ -3,7 +3,7 @@ name: Create A File
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   createFile:
