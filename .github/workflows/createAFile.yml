@@ -1,21 +1,17 @@
-name: Create A File
-# This workflow is triggered on pushes to the repository.
-on:
-  push:
-    branches:
-      - main
-
+name: Push commit
+on: push
+permissions:
+  contents: write
 jobs:
-  createFile:
-    name: Create A File
+  report:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: 1arp/create-a-file-action@0.4.5
-        with:
-          path: 'src'
-          isAbsolutePath: false
-          file: 'foo.bar'
-          content: |
-            Hello
-            World
+      - uses: actions/checkout@v3
+      - name: Create report file
+        run: date +%s > report.txt
+      - name: Commit report
+        run: |
+          git config --global user.name 'Your Name'
+          git config --global user.email 'your-username@users.noreply.github.com'
+          git commit -am "Automated report"
+          git push
