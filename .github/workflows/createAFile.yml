@@ -1,4 +1,4 @@
-name: Push commit
+Selname: Push commit
 on: push
 permissions:
   contents: write
@@ -11,7 +11,7 @@ jobs:
         run: date +%s > report.txt
       - name: Commit report
         run: |
-          git config --global user.name 'Your Name'
-          git config --global user.email 'your-username@users.noreply.github.com'
+          git config --global user.name 'Omer Sella'
+          git config --global user.email 'o.sella@imperial.ac.uk'
           git commit -am "Automated report"
           git push
